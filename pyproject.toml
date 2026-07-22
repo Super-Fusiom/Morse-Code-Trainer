@@ -1,0 +1,7 @@
+[project]
+name = "morse-code-trainer"
+version = "0.1.0"
+description = "A Morse code trainer to identify and understand morse code"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
