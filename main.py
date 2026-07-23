@@ -1,4 +1,4 @@
-from morse_code.ui.app import Trainer
+from morse_code.ui.main_menu import Trainer
 
 def main():
     app = Trainer()

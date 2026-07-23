@@ -1,3 +1,7 @@
+Screen {
+    background: hsl(0, 100%, 0%);
+}
+
 Button {
     background: green;
     color: black;
