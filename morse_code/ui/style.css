@@ -1,8 +1,17 @@
 Button {
     background: green;
     color: black;
+    content-align: center middle;
+    text-align: center;
 }
 
 Button:hover {
     background: hsl(125, 50%, 50%)
+}
+
+#main {
+    height: 100%;
+    margin: 4 8;
+    padding: 1 2;
+    align: center middle;
 }
