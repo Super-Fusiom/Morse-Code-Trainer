@@ -1,0 +1,8 @@
+Button {
+    background: green;
+    color: black;
+}
+
+Button:hover {
+    background: hsl(125, 50%, 50%)
+}

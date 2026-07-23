@@ -1,5 +1,8 @@
+from morse_code.ui.app import Trainer
+
 def main():
-    print("Hello from morse-code-trainer!")
+    app = Trainer()
+    app.run()
 
 
 if __name__ == "__main__":
