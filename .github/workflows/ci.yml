@@ -22,4 +22,5 @@ jobs:
             uv tool install ruff
       - name: Lint with ruff
         run: |
+            uv run ruff check --config pyproject.toml --fix
             ruff check --config pyproject.toml
