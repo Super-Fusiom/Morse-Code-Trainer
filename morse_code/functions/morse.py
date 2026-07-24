@@ -55,14 +55,36 @@ def encode(msg: str) -> None | str:
     return output.rstrip()
 
 def decode(msg: str) -> None | str:
+    msg = msg.lstrip()
+    msg = msg.rstrip()
     output: str = ""
     inter: str = ""
-    for morse in msg:
+    for i in range(len(msg)):
         if len(inter) > MORSE_CODE_MAX_OPCODE:
             return None
-        if morse == " ":
-            output += MORSE_CODE_TO_LETTER[inter]
+        # Case for last letter decode
+        if i == len(msg) - 1:
+            inter += msg[i]
+            try:
+                output += MORSE_CODE_TO_LETTER[inter]
+                continue
+            except KeyError:
+                return None
+        if msg[i] == "/":
+            try:
+                output += MORSE_CODE_TO_LETTER[inter]
+            except KeyError:
+                return
+            inter = ""
+            output += " "
+            continue
+        if msg[i] == " ":
+            try:
+                output += MORSE_CODE_TO_LETTER[inter]
+            except KeyError:
+                return None
             inter = ""
             continue
-        inter += morse
+        inter += msg[i]
+
     return output

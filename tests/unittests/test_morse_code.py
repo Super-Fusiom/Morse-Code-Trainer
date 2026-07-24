@@ -35,3 +35,19 @@ def test_encoding() -> None:
     assert encode("World") == ".-- --- .-. .-.. -.."
     assert encode("     World") == ".-- --- .-. .-.. -.."
     assert encode("World     ") == ".-- --- .-. .-.. -.."
+
+    assert encode("Hi World") == ".... ../.-- --- .-. .-.. -.."
+
+
+def test_decoding() -> None:
+    message: str = "... .-- .. .--. ."
+    assert decode(message) == "SWIPE"
+
+    assert decode("SWIPE") is None
+    assert decode("........") is None
+
+    assert decode(".--") == "W"
+    assert decode(f"{message}/.--") == "SWIPE W"
+    assert decode(f"     {message}/.--") == "SWIPE W"
+    assert decode(f"     {message}/.--     ") == "SWIPE W"
+    assert decode(f"{message}/.--     ") == "SWIPE W"
