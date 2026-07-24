@@ -24,3 +24,6 @@ jobs:
         run: |
             uv run ruff check --config pyproject.toml --fix
             ruff check --config pyproject.toml
+      - name: Test Code
+        run: |
+            pytest
