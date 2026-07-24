@@ -1,23 +1,9 @@
 """Main Menu UI"""
 
 from textual import on
-from textual.app import App
 from textual.screen import Screen
 from textual.containers import Container
 from textual.widgets import Label, Button
-
-from morse_code.ui.sound_train import SoundUI
-
-class Trainer(App):
-    CSS_PATH = "style.css"
-
-    def on_mount(self):
-        self.install_screen(MainMenu(), "menu")
-        self.install_screen(SoundUI(), "sound")
-        self.push_screen("menu")
-
-    def exit_app(self):
-        self.exit()
 
 class MainMenu(Screen):
     def compose(self):
