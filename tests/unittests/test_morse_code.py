@@ -24,14 +24,14 @@ def test_morse_code_conversion() -> None:
     assert message == LM["W"] + LM["O"] + LM["R"] + LM["L"] + LM["D"]
 
 def test_encoding() -> None:
-    message = "SWIPE"
+    message: str = "SWIPE"
     assert encode(message) == "... .-- .. .--. ."
-    
+
     assert encode(" ") is None
     assert encode("123") is None
     assert encode("``~~``") is None
     assert encode("") is None
-    
+
     assert encode("World") == ".-- --- .-. .-.. -.."
     assert encode("     World") == ".-- --- .-. .-.. -.."
     assert encode("World     ") == ".-- --- .-. .-.. -.."

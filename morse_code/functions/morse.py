@@ -45,6 +45,7 @@ def encode(msg: str) -> None | str:
     output: str = ""
     for letter in msg:
         if letter == " ":
+            output = output.rstrip()
             output += "/"
             continue
         try:
