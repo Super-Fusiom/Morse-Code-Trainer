@@ -5,5 +5,6 @@ description = "A Morse code trainer to identify and understand morse code"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "pytest>=9.1.1",
     "textual-dev>=1.8.0",
 ]
