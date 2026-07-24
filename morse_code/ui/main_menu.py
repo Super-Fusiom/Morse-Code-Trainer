@@ -12,6 +12,7 @@ class MainMenu(Screen):
             Button("Visual Training", id="visual"),
             Button("Audio Training", id="audio"),
             Button("Stats", id="stats"),
+            Button("Settings", id="settings"),
             Button("Exit!", id="exit"),
             id="main"
         )
