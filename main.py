@@ -1,6 +1,8 @@
 from textual.app import App
+
 from morse_code.ui.main_menu import MainMenu
 from morse_code.ui.sound_train import SoundUI
+
 
 class Trainer(App):
     CSS_PATH = "morse_code/ui/style.css"

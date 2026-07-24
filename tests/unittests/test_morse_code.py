@@ -1,9 +1,7 @@
-from morse_code.functions.morse import (
-    MORSE_CODE_TO_LETTER as ML,
-    LETTER_TO_MORSE_CODE as LM,
-    encode,
-    decode
-)
+from morse_code.functions.morse import LETTER_TO_MORSE_CODE as LM
+from morse_code.functions.morse import MORSE_CODE_TO_LETTER as ML
+from morse_code.functions.morse import decode, encode
+
 
 def test_letter_conversion() -> None:
     assert ML["-"] == "T"

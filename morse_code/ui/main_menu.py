@@ -1,9 +1,10 @@
 """Main Menu UI"""
 
 from textual import on
-from textual.screen import Screen
 from textual.containers import Container
-from textual.widgets import Label, Button
+from textual.screen import Screen
+from textual.widgets import Button, Label
+
 
 class MainMenu(Screen):
     def compose(self):
