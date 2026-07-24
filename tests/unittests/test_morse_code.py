@@ -1,4 +1,9 @@
-from morse_code.functions.morse import MORSE_CODE_TO_LETTER as ML, LETTER_TO_MORSE_CODE as LM
+from morse_code.functions.morse import (
+    MORSE_CODE_TO_LETTER as ML,
+    LETTER_TO_MORSE_CODE as LM,
+    encode,
+    decode
+)
 
 def test_letter_conversion() -> None:
     assert ML["-"] == "T"
@@ -17,3 +22,16 @@ def test_morse_code_conversion() -> None:
     message: str = ".-- --- .-. .-.. -..".replace(" ", "")
 
     assert message == LM["W"] + LM["O"] + LM["R"] + LM["L"] + LM["D"]
+
+def test_encoding() -> None:
+    message = "SWIPE"
+    assert encode(message) == "... .-- .. .--. ."
+    
+    assert encode(" ") is None
+    assert encode("123") is None
+    assert encode("``~~``") is None
+    assert encode("") is None
+    
+    assert encode("World") == ".-- --- .-. .-.. -.."
+    assert encode("     World") == ".-- --- .-. .-.. -.."
+    assert encode("World     ") == ".-- --- .-. .-.. -.."
