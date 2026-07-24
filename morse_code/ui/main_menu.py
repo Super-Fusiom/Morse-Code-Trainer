@@ -22,4 +22,4 @@ class MainMenu(Screen):
 
     @on(Button.Pressed, "#exit")
     def exit_pressed(self) -> None:
-        self.app.exit_app()
+        self.app.exit()
