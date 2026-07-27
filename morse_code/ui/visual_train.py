@@ -1,4 +1,5 @@
-# from textual import on
+"""Visual Mode for trainer"""
+from textual import on
 from textual.containers import Container
 from textual.screen import Screen
 from textual.widgets import Button, Label
