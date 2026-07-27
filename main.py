@@ -1,8 +1,12 @@
+from pathlib import Path
+
 from textual.app import App
 
+from morse_code.functions.settings import load_settings
 from morse_code.ui.main_menu import MainMenu
 from morse_code.ui.sound_train import SoundUI
 
+SETTINGS_FILE = Path("settings.json")
 
 class Trainer(App):
     CSS_PATH = "morse_code/ui/style.css"
@@ -14,6 +18,7 @@ class Trainer(App):
 
 
 def main():
+    load_settings(SETTINGS_FILE)
     app = Trainer()
     app.run()
 
