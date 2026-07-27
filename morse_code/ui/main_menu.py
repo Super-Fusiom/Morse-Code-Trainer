@@ -20,6 +20,10 @@ class MainMenu(Screen):
             id="main"
         )
 
+    @on(Button.Pressed, "#visual")
+    def visual_pressed(self) -> None:
+        self.app.switch_screen("visual")
+
     @on(Button.Pressed, "#audio")
     def sound_pressed(self) -> None:
         self.app.switch_screen("sound")

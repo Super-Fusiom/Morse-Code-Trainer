@@ -4,7 +4,7 @@ from textual.screen import Screen
 from textual.widgets import Button, Label
 
 
-class SoundUI(Screen):
+class SoundWelcome(Screen):
     def compose(self):
         yield Container(
             Label("""

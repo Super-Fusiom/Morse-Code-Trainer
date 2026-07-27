@@ -4,7 +4,8 @@ from textual.app import App
 
 from morse_code.functions.settings import load_settings
 from morse_code.ui.main_menu import MainMenu
-from morse_code.ui.sound_train import SoundUI
+from morse_code.ui.sound_train import SoundWelcome
+from morse_code.ui.visual_train import VisualDecode, VisualEncode, VisualWelcome
 
 SETTINGS_FILE = Path("settings.json")
 
@@ -17,7 +18,10 @@ class Trainer(App):
 
     def on_mount(self):
         self.install_screen(MainMenu(), "menu")
-        self.install_screen(SoundUI(), "sound")
+        self.install_screen(SoundWelcome(), "sound")
+        self.install_screen(VisualWelcome(), "visual")
+        self.install_screen(VisualDecode(), "visual_decode")
+        self.install_screen(VisualEncode(), "visual_encode")
         self.push_screen("menu")
 
 
