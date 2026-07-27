@@ -10,6 +10,10 @@ SETTINGS_FILE = Path("settings.json")
 
 class Trainer(App):
     CSS_PATH = "morse_code/ui/style.css"
+    def __init__(self):
+        super().__init__()
+        self.settings = load_settings(SETTINGS_FILE)
+        self.settings_path = SETTINGS_FILE
 
     def on_mount(self):
         self.install_screen(MainMenu(), "menu")
@@ -18,7 +22,6 @@ class Trainer(App):
 
 
 def main():
-    load_settings(SETTINGS_FILE)
     app = Trainer()
     app.run()
 
