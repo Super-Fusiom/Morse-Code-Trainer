@@ -5,6 +5,8 @@ from textual.containers import Container
 from textual.screen import Screen
 from textual.widgets import Button, Label
 
+from morse_code.functions.settings import save_settings
+
 
 class MainMenu(Screen):
     def compose(self):
@@ -24,4 +26,5 @@ class MainMenu(Screen):
 
     @on(Button.Pressed, "#exit")
     def exit_pressed(self) -> None:
+        save_settings(self.app.settings, self.app.settings_path)
         self.app.exit()
