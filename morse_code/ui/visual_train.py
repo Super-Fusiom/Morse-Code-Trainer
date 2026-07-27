@@ -4,15 +4,17 @@ from textual.screen import Screen
 from textual.widgets import Button, Label
 
 
-class VisualBrief(Screen):
-
+class VisualWelcome(Screen):
     def compose(self):
         yield Container(
             Label("""
-                The Visual Trainer has two parts, Letters to Morse\n
-                and Morse to Letters.
-
-                """),
-            Button(),
-            Button()
+            The visual trainer will show you either morse code or letter for you to encode or decode.
+            Depending on what you want to do.\n
+            Make sure you know what the controls for short and long beeps are if you are encoding.\n
+            (See settings for key binds)
+            """),
+            Label("Are you ready?"),
+            Button("Encode GO!", id="encode"),
+            Button("Decode GO!", id="decode"),
+            Button("Yea nah", id="main_menu_exit")
         )
