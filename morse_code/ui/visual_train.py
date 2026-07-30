@@ -40,10 +40,19 @@ class VisualWelcome(Screen):
 
 class VisualEncode(Screen):
 
-    current_morse = reactive("")
-    start_time = perf_counter()
-    questions_correct: list[bool] = []
-    question_times: list[float] = []
+    def __init__(self):
+        self.question_letter = reactive(f"{randomise_letter()}")
+        self.current_morse = reactive("")
+        self.start_time = perf_counter()
+        self.questions = 10
+        self.player_record = self.app.session_data
+        super().__init__()
+
+    def reset_session(self):
+        self.question_letter = randomise_letter()
+        self.current_morse = ""
+        self.start_time = perf_counter()
+        self.questions = 10
 
     def compose(self):
         yield Container(
