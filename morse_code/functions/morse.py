@@ -1,4 +1,7 @@
 """Logic and interuppetation of Morse Code"""
+
+from random import choice
+
 MORSE_CODE_MAX_OPCODE = 5
 
 LETTER_TO_MORSE_CODE = {
@@ -88,3 +91,9 @@ def decode(msg: str) -> None | str:
         inter += msg[i]
 
     return output
+
+def randomise_morse() -> str:
+    return choice(list(MORSE_CODE_TO_LETTER))
+
+def randomise_letter() -> str:
+    return choice(list(LETTER_TO_MORSE_CODE))
