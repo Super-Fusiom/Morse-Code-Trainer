@@ -105,5 +105,25 @@ class VisualEncode(Screen):
             self.current_morse = self.current_morse[:-1]
             self.query_one("#encode_input").update(f"{self.current_morse}")
 
+
 class VisualDecode(Screen):
     pass
+
+
+class VisualResults(Screen):
+    def __init__(self):
+        self.player_record = self.app.session_data
+
+        super().__init__()
+
+    def compose(self):
+        yield Container(
+            Label("Here are the results!"),
+            Label(f"Questions Correct: {self.player_record.questions_correct}"),
+            Label(f"Question times: {self.player_record.question_times}"),
+ #           Button("Main Menu", id="main_menu_exit")
+        )
+
+    @on(Button.Pressed, "#main_menu_exit")
+    def main_menu_exit(self):
+        self.app.switch_screen("menu")
