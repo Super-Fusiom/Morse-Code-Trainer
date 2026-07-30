@@ -87,9 +87,16 @@ class VisualEncode(Screen):
         if event.key == "enter":
             if len(self.current_morse) == 0:
                 return
-            self.question_times.append(perf_counter() - self.start_time)
+            self.player_record.question_times.append(perf_counter() - self.start_time)
             self.start_time = perf_counter()
-            self.query_one("#encode_input").update(f"{self.current_morse} at {self.question_times}")
+            self.player_record.questions_correct.append(encode_question_check(self.question_letter, self.current_morse))
+            if len(self.player_record.questions_correct) == self.questions:
+                self.app.push_screen("visual_results")
+                return
+            self.question_letter = randomise_letter()
+            self.current_morse = ""
+            self.query_one("#encode_randomiser").update(self.question_letter)
+            self.query_one("#encode_input").update(self.current_morse)
 
 
         if event.key == "backspace":
