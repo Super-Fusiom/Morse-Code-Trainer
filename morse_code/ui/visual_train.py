@@ -59,7 +59,7 @@ class VisualEncode(Screen):
             Label("Encode THIS!"),
             Container(
                 Label("Current letter to encode:"),
-                Label("", id="encode_randomiser")
+                Label(f"{self.question_letter}", id="encode_randomiser")
             ),
             Container(
                 Label("Current morse:"),
