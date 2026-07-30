@@ -3,7 +3,7 @@ from textual import on
 from textual.containers import Container
 from textual.reactive import reactive
 from textual.screen import Screen
-from textual.widgets import Button, Label, Log
+from textual.widgets import Button, Label
 
 
 class VisualWelcome(Screen):
@@ -62,7 +62,14 @@ class VisualEncode(Screen):
             self.current_morse += "-"
             self.query_one("#encode_input").update(f"{self.current_morse}")
 
-
+        # TODO implement this on settings rather then hardcode
+        if event.key == "enter":
+            pass
+        if event.key == "backspace":
+            if len(self.current_morse) < 0:
+                return
+            self.current_morse = self.current_morse[:-1]
+            self.query_one("#encode_input").update(f"{self.current_morse}")
 
 class VisualDecode(Screen):
     pass
