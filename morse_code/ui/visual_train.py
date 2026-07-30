@@ -87,7 +87,7 @@ class VisualEncode(Screen):
         if event.key == "enter":
             if len(self.current_morse) == 0:
                 return
-            self.player_record.question_times.append(perf_counter() - self.start_time)
+            self.player_record.question_times.append(round(perf_counter() - self.start_time, 2))
             self.start_time = perf_counter()
             self.player_record.questions_correct.append(encode_question_check(self.question_letter, self.current_morse))
             if len(self.player_record.questions_correct) == self.questions:
