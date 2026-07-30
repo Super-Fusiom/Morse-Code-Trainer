@@ -1,13 +1,16 @@
 """Visual Mode for trainer"""
+from time import perf_counter
+
 from textual import on
 from textual.containers import Container
 from textual.reactive import reactive
 from textual.screen import Screen
 from textual.widgets import Button, Label
 
-from time import perf_counter
-
-from morse_code.functions.validate_answer import encode_question_check, decode_question_check
+from morse_code.functions.morse import randomise_letter
+from morse_code.functions.validate_answer import (
+    encode_question_check,
+)
 
 
 class VisualWelcome(Screen):
