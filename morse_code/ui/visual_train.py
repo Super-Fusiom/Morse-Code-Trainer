@@ -30,6 +30,8 @@ class VisualWelcome(Screen):
 
     @on(Button.Pressed, "#encode")
     def encode_pressed(self):
+        self.app.get_screen("visual_encode").reset_session()
+
         self.app.switch_screen("visual_encode")
 
     @on(Button.Pressed, "#decode")
