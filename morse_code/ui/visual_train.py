@@ -5,6 +5,10 @@ from textual.reactive import reactive
 from textual.screen import Screen
 from textual.widgets import Button, Label
 
+from time import perf_counter
+
+from morse_code.functions.validate_answer import encode_question_check, decode_question_check
+
 
 class VisualWelcome(Screen):
     def compose(self):
@@ -35,6 +39,9 @@ class VisualWelcome(Screen):
 class VisualEncode(Screen):
 
     current_morse = reactive("")
+    start_time = perf_counter()
+    questions_correct: list[bool] = []
+    question_times: list[float] = []
 
     def compose(self):
         yield Container(
@@ -62,9 +69,15 @@ class VisualEncode(Screen):
             self.current_morse += "-"
             self.query_one("#encode_input").update(f"{self.current_morse}")
 
-        # TODO implement this on settings rather then hardcode
+        # TODO implement hardcoded binds to settings
         if event.key == "enter":
-            pass
+            if len(self.current_morse) == 0:
+                return
+            self.question_times.append(perf_counter() - self.start_time)
+            self.start_time = perf_counter()
+            self.query_one("#encode_input").update(f"{self.current_morse} at {self.question_times}")
+
+
         if event.key == "backspace":
             if len(self.current_morse) < 0:
                 return
