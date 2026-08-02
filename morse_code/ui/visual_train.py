@@ -47,15 +47,17 @@ class VisualEncode(Screen):
         self.question_letter = reactive(f"{randomise_letter()}")
         self.current_morse = reactive("")
         self.start_time = perf_counter()
-        self.questions = 10
+        self.questions = 5
         self.player_record = self.app.session_data
+        self.question_asked = 0
         super().__init__()
 
     def reset_session(self):
         self.question_letter = randomise_letter()
         self.current_morse = ""
         self.start_time = perf_counter()
-        self.questions = 10
+        self.questions = 5
+        self.question_asked = 0
 
     def compose(self):
         yield Container(
@@ -87,14 +89,14 @@ class VisualEncode(Screen):
         if event.key == "enter":
             if len(self.current_morse) == 0:
                 return
+            self.question_asked += 1
             self.player_record.question_times.append(round(perf_counter() - self.start_time, 2))
             self.start_time = perf_counter()
             self.player_record.questions_correct.append(encode_question_check(self.question_letter, self.current_morse))
-            if len(self.player_record.questions_correct) == self.questions:
+            if self.question_asked == self.questions:
                 self.app.push_screen("visual_results")
                 return
-            self.question_letter = randomise_letter()
-            self.current_morse = ""
+            self.reset_session()
             self.query_one("#encode_randomiser").update(self.question_letter)
             self.query_one("#encode_input").update(self.current_morse)
 
@@ -121,7 +123,7 @@ class VisualResults(Screen):
             Label("Here are the results!"),
             Label(f"Questions Correct: {self.player_record.questions_correct}"),
             Label(f"Question times: {self.player_record.question_times}"),
- #           Button("Main Menu", id="main_menu_exit")
+           # Button("Main Menu", id="main_menu_exit")
         )
 
     @on(Button.Pressed, "#main_menu_exit")
